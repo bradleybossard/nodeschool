@@ -35,6 +35,7 @@ var buf = fs.readFile(filename, function(err, data) {
 */
 
 // Challenge 5
+/*
 var fs = require('fs');
 var path = require('path');
 
@@ -51,3 +52,19 @@ var buf = fs.readdir(directory, function(err, list) {
     }
   }
 });
+*/
+
+// Challenge 6
+
+var mymodule = require('./mymodule');
+mymodule(process.argv[2], process.argv[3],callback);
+
+function callback(err, data) {
+  if (err)
+    return "There was a error."
+
+  data.forEach(function (file) {
+        console.log(file)
+  })
+}
+
