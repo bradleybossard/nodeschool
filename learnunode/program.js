@@ -18,6 +18,7 @@ var numLines = buf.toString().split('\n').length - 1;
 console.log(numLines);
 */
 
+/*
 // Challenge 4
 var fs = require('fs');
 
@@ -31,5 +32,22 @@ var buf = fs.readFile(filename, function(err, data) {
   console.log(numLines);
 
 });
+*/
 
+// Challenge 5
+var fs = require('fs');
+var path = require('path');
 
+var directory = process.argv[2];
+var filter = process.argv[3];
+var buf = fs.readdir(directory, function(err, list) {
+  if (err) {
+    throw err;
+  }
+
+  for (var i = 0; i < list.length; i++) {
+    if (path.extname(list[i]).substring(1) == filter) {
+      console.log(list[i]);
+    }
+  }
+});
