@@ -55,7 +55,7 @@ var buf = fs.readdir(directory, function(err, list) {
 */
 
 // Challenge 6
-
+/*
 var mymodule = require('./mymodule');
 mymodule(process.argv[2], process.argv[3],callback);
 
@@ -67,4 +67,15 @@ function callback(err, data) {
         console.log(file)
   })
 }
+*/
+
+// Challenge 7
+var http = require('http');
+
+http.get(process.argv[2], function(response) {
+  response.setEncoding('utf8');
+  response.on('data', console.log);
+  response.on('error', console.error);
+});
+
 
