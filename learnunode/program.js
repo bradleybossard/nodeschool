@@ -69,6 +69,7 @@ function callback(err, data) {
 }
 */
 
+/*
 // Challenge 7
 var http = require('http');
 
@@ -77,5 +78,23 @@ http.get(process.argv[2], function(response) {
   response.on('data', console.log);
   response.on('error', console.error);
 });
+*/
 
+// Challenge 8
+
+var http = require('http');
+var bl = require('bl');
+
+
+http.get(process.argv[2], function(response) {
+  response.pipe(bl(function(err, data) {
+    if (err) {
+      return console.error(err);
+    }
+
+    data = data.toString();
+    console.log(data.length);
+    console.log(data);
+  }));
+});
 
