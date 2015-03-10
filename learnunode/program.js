@@ -131,6 +131,8 @@ for (var i = 0; i < 3; i++)
   httpGet(i)
 */
 
+/*
+// Challenge 10 - Time Server
 var net = require('net')
 
 function zeroFill(i) {
@@ -152,4 +154,18 @@ var server = net.createServer(function (socket) {
 
 server.listen(Number(process.argv[2]))
 
+*/
 
+
+// Challenge 11 - HTTP File Server
+
+var http = require('http')
+var fs = require('fs')
+
+var server = http.createServer(function (req, res) {
+  res.writeHead(200, { 'content-type': 'text/plain' })
+
+  fs.createReadStream(process.argv[3]).pipe(res)
+})
+
+server.listen(Number(process.argv[2]))
