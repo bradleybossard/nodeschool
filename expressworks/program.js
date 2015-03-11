@@ -56,12 +56,30 @@ app.listen(process.argv[2]);
 */
 
 // Challenge 5 - Stylish CSS
-
+/*
 var express = require('express')
 var app = express()
 
 app.use(require('stylus').middleware(process.argv[3]));
 app.use(express.static(process.argv[3]));
 
+
+app.listen(process.argv[2])
+*/
+
+
+// Challenge 6 - Param Pam Pam
+
+var express = require('express')
+var app = express()
+
+app.put('/message/:id', function(req, res){
+  var id = req.params.id
+  var str = require('crypto')
+    .createHash('sha1')
+    .update(new Date().toDateString() + id)
+    .digest('hex')
+  res.send(str)
+})
 
 app.listen(process.argv[2])
