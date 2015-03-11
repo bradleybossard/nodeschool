@@ -69,7 +69,7 @@ app.listen(process.argv[2])
 
 
 // Challenge 6 - Param Pam Pam
-
+/*
 var express = require('express')
 var app = express()
 
@@ -83,3 +83,39 @@ app.put('/message/:id', function(req, res){
 })
 
 app.listen(process.argv[2])
+*/
+
+// Challenge 7 - Whats in Query
+/*
+var express = require('express')
+var app = express()
+
+app.get('/search', function(req, res){
+  var query = req.query
+  res.send(query)
+})
+
+app.listen(process.argv[2])
+*/
+
+// Challenge 8 - JSON me
+
+var express = require('express')
+var app = express()
+var fs = require('fs')
+
+app.get('/books', function(req, res){
+  var filename = process.argv[3]
+  fs.readFile(filename, function(e, data) {
+    if (e) return res.send(500)
+    try {
+      books = JSON.parse(data)
+    } catch (e) {
+      res.send(500)
+    }
+    res.json(books)
+  })
+})
+
+app.listen(process.argv[2])
+
